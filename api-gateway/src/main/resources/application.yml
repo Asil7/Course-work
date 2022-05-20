@@ -1,0 +1,17 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: product
+          uri: lb://product
+          predicates:
+            - Path=/api/product/**
+        - id: card
+          uri: lb://card
+          predicates:
+            - Path=/api/card/**
